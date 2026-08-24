@@ -9,5 +9,41 @@ export function TopBar() {
   const { monitoringState } = useSystemStatus();
   const { pathname } = useLocation();
   const breadcrumbs = getBreadcrumbs(pathname);
-  return <header className="top-bar"><div className="top-bar__identity"><button type="button" className="menu-button" onClick={toggleSidebar} aria-label="Toggle navigation" aria-controls="primary-navigation">☰</button><span className="brand-mark" aria-hidden="true">T</span><span className="brand-name">{APP_NAME}</span></div><nav className="breadcrumbs" aria-label="Breadcrumb">{breadcrumbs.map((crumb, index) => <span key={`${crumb}-${index}`}>{crumb}</span>)}</nav><span className={`monitoring-indicator monitoring-indicator--${monitoringState.toLowerCase()}`}><span aria-hidden="true" />{monitoringState === 'ACTIVE' ? 'Monitoring active' : `Monitoring ${monitoringState.toLowerCase()}`}</span></header>;
+
+  return (
+    <header className="top-bar">
+      <div className="top-bar__left">
+        <button
+          type="button"
+          className="menu-button"
+          onClick={toggleSidebar}
+          aria-label="Toggle navigation"
+          aria-controls="primary-navigation"
+        >
+          ☰
+        </button>
+        <div className="top-bar__dossier-label">
+          <span className="top-bar__file-type">FINANCIAL INTELLIGENCE FILE</span>
+          <nav className="breadcrumbs" aria-label="Breadcrumb">
+            <span className="breadcrumbs__root">{APP_NAME}</span>
+            {breadcrumbs.map((crumb, index) => (
+              <span key={`${crumb}-${index}`}>{crumb}</span>
+            ))}
+          </nav>
+        </div>
+      </div>
+
+      <div className="top-bar__right">
+        <span className="top-bar__working-tag">WORKING DOSSIER</span>
+        <span
+          className={`monitoring-indicator monitoring-indicator--${monitoringState.toLowerCase()}`}
+        >
+          <span aria-hidden="true" />
+          {monitoringState === 'ACTIVE'
+            ? 'LIVE MONITORING'
+            : `MONITORING ${monitoringState.toUpperCase()}`}
+        </span>
+      </div>
+    </header>
+  );
 }

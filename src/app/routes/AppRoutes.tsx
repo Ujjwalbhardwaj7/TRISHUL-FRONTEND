@@ -19,7 +19,9 @@ export function AppRoutes() {
         <Route path="cases/:caseId" element={<CasesPlaceholderPage />} />
         <Route path="prediction" element={<PredictionPlaceholderPage />} />
         <Route path="prediction/:caseId" element={<PredictionPlaceholderPage />} />
+        <Route path="resolution" element={<ResolutionPlaceholderPage />} />
         <Route path="resolution/:caseId" element={<ResolutionPlaceholderPage />} />
+        <Route path="audit" element={<AuditPlaceholderPage />} />
         <Route path="audit/:caseId" element={<AuditPlaceholderPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>

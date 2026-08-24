@@ -10,6 +10,8 @@ export { ErrorState } from './ErrorState/ErrorState';
 export { EvidenceGapMarker } from './EvidenceGapMarker/EvidenceGapMarker';
 export { LoadingState } from './LoadingState/LoadingState';
 export { MetricCard } from './MetricCard/MetricCard';
+export { MarginNote } from './MarginNote/MarginNote';
+export { MetadataList } from './MetadataList/MetadataList';
 export { Modal } from './Modal/Modal';
 export { PageHeader } from './PageHeader/PageHeader';
 export { SectionHeader } from './SectionHeader/SectionHeader';

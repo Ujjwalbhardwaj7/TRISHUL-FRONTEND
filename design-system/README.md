@@ -1,7 +1,7 @@
 # TRISHUL design system
 
-CSS custom properties in `src/styles/globals.css` are the authoritative token values. TypeScript token exports reference those variables for JavaScript-side presentation needs, so feature branches receive the same palette, surfaces, radii, and elevation values through either consumption path.
+This folder contains the shared TRISHUL frontend design system. Its visual direction is an editorial intelligence dossier: deep navy, warm paper surfaces, restrained rules, editorial headings, and compact operational text.
 
-`StatusPill` is the single owner of domain status-to-colour presentation. Red is reserved for `CRITICAL` operational urgency only. `ABSTAIN` is an intentional, explicitly labelled state, never an empty value or error treatment.
+CSS custom properties in `src/styles/globals.css` are authoritative. Reuse shared components and tokens before adding variants. `StatusPill` owns domain status presentation; red is reserved for `CRITICAL`, while `ABSTAIN` is intentional and explicit.
 
-The interface is laptop-first. On mobile, navigation becomes a drawer, case navigation becomes a select control, and the shared data table becomes a stacked layout for quick status checking.
+The application is laptop-first. Mobile keeps one navigation drawer and converts dense tables into readable structured rows.

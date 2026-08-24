@@ -1,6 +1,6 @@
 export const elevation = {
   none: 'none',
-  sm: '0 1px 2px rgb(20 33 61 / 0.05)',
-  md: '0 4px 16px rgb(20 33 61 / 0.09), 0 1px 4px rgb(20 33 61 / 0.05)',
-  lg: '0 8px 32px rgb(20 33 61 / 0.13), 0 2px 8px rgb(20 33 61 / 0.05)',
+  sm: 'none',
+  md: '0 2px 8px rgb(13 38 59 / 0.08)',
+  lg: '0 8px 24px rgb(13 38 59 / 0.14)',
 } as const;
