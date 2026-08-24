@@ -1,0 +1,1240 @@
+/* ==========================================================================
+   TRISHUL — Global Design System
+   Visual Identity: "The Calm Scholar"
+   Palette: deep navy · soft sky blue · crisp white · warm beige
+   Blueprint: design-system/docs/FRONTEND_BLUEPRINT.md
+   ========================================================================== */
+
+/* ── Design Tokens ─────────────────────────────────────────────────────────── */
+:root {
+  /* Typography */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', 'Menlo', 'Monaco',
+    'Consolas', monospace;
+
+  /* ── Surfaces — "The Calm Scholar" ──────────────────────────────────── */
+  /* Crisp white is the primary workspace surface.
+     Warm beige softens the page behind it.                                   */
+  --color-surface-base:    #F4EFE6; /* warm beige — page background           */
+  --color-surface-raised:  #FFFFFF; /* crisp white — cards, panels, sidebar   */
+  --color-surface-sunken:  #EDE8DF; /* slightly deeper beige — table headers  */
+  --color-surface-overlay: #14213D; /* deep navy — modal backdrop             */
+  --color-surface-active:  #E5F2F9; /* sky tint — selected / active states    */
+
+  /* ── Text ────────────────────────────────────────────────────────────── */
+  --color-text-primary:    #14213D; /* deep navy — headings, body             */
+  --color-text-secondary:  #2C4565; /* medium navy — secondary copy           */
+  --color-text-muted:      #6B7B8D; /* blue-grey — metadata, labels           */
+  --color-text-on-critical: #FFFFFF;
+
+  /* ── Borders ─────────────────────────────────────────────────────────── */
+  --color-border-subtle:   #D9D2C8; /* warm grey — subtle dividers            */
+  --color-border-strong:   #B8AFA4; /* warm grey — stronger dividers          */
+  --color-border-focus:    #8EC5E8; /* soft sky blue — focus ring             */
+
+  /* ── Interactive — sky blue family ──────────────────────────────────── */
+  /* #8EC5E8 is the brand accent. Buttons need a darker variant for
+     WCAG contrast on white. Interactive states use the lighter tint.        */
+  --color-interactive:       #2A7AAF; /* darker sky blue — buttons, links     */
+  --color-interactive-hover: #1E6499; /* hover / pressed                      */
+  --color-interactive-light: #E5F2F9; /* sky tint — selected bg               */
+
+  /* ── Domain Status Semantics ─────────────────────────────────────────── */
+  /* These are functional colours, not branding colours. They appear in
+     badges, indicators, alerts and borders — never as large decorative bg.  */
+
+  /* NORMAL — calm, no elevated concern */
+  --color-status-normal:        #166534;
+  --color-status-normal-bg:     #F0FDF4;
+
+  /* ANOMALOUS — pattern deviation (not confirmed criminal) */
+  --color-status-anomalous:     #6D28D9;
+  --color-status-anomalous-bg:  #F5F3FF;
+
+  /* WATCH — caution, continued observation required */
+  --color-status-watch:         #92400E;
+  --color-status-watch-bg:      #FFFBEB;
+
+  /* SUSPECTED — high risk, under investigation — NOT confirmed fraud */
+  --color-status-suspected:     #1D4ED8;
+  --color-status-suspected-bg:  #EEF2FF;
+
+  /* ACTIVE — operationally active, high urgency — distinct from monitoring */
+  --color-status-active:        #0C4A6E;
+  --color-status-active-bg:     #E0F2FE;
+
+  /* MONITORING — intentional stable observation */
+  --color-status-monitoring:    #0369A1;
+  --color-status-monitoring-bg: #E0F2FE;
+
+  /* PREDICT — prediction workflow state */
+  --color-status-predict:       #5B21B6;
+  --color-status-predict-bg:    #F5F3FF;
+
+  /* ABSTAIN — deliberate evidence withdrawal, NOT an error */
+  --color-status-abstain:       #64748B;
+  --color-status-abstain-bg:    #F1F5F9;
+
+  /* CRITICAL — genuine confirmed operational urgency ONLY */
+  --color-status-critical:      #991B1B;
+  --color-status-critical-bg:   #FEF2F2;
+
+  /* CLOSED — resolved, no further action */
+  --color-status-closed:        #166534;
+  --color-status-closed-bg:     #F0FDF4;
+
+  /* ── Spacing (4px base grid) ─────────────────────────────────────────── */
+  --space-1:  0.25rem;  /*  4px */
+  --space-2:  0.5rem;   /*  8px */
+  --space-3:  0.75rem;  /* 12px */
+  --space-4:  1rem;     /* 16px */
+  --space-5:  1.25rem;  /* 20px */
+  --space-6:  1.5rem;   /* 24px */
+  --space-8:  2rem;     /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-14: 3.5rem;   /* 56px */
+  --space-16: 4rem;     /* 64px */
+
+  /* ── Corner Radii — restrained, no SaaS bubble rounding ─────────────── */
+  --radius-sm:   0.375rem; /*  6px — small controls, badges         */
+  --radius-md:   0.5rem;   /*  8px — standard containers            */
+  --radius-lg:   0.75rem;  /* 12px — large panels, dialogs          */
+  --radius-pill: 9999px;   /* pills — status, filters, metadata only */
+
+  /* ── Shadows — borders first, shadows only for floating UI ──────────── */
+  --shadow-sm: 0 1px 2px rgb(20 33 61 / 0.05);
+  --shadow-md: 0 4px 16px rgb(20 33 61 / 0.09), 0 1px 4px rgb(20 33 61 / 0.05);
+  --shadow-lg: 0 8px 32px rgb(20 33 61 / 0.13), 0 2px 8px rgb(20 33 61 / 0.05);
+
+  /* ── Motion ─────────────────────────────────────────────────────────── */
+  --transition-fast: 100ms ease;
+  --transition-base: 150ms ease;
+  --transition-slow: 250ms ease;
+
+  /* ── Z-index ─────────────────────────────────────────────────────────── */
+  --z-topbar:  20;
+  --z-sidebar: 30;
+  --z-modal:   50;
+}
+
+/* ── Base Reset ────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  min-width: 320px;
+  background: var(--color-surface-base);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;   /* 15px — analytical density, not cramped */
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  font-optical-sizing: auto;
+  line-height: 1.55;
+  color: var(--color-text-primary);
+  background: var(--color-surface-base);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+a { color: inherit; }
+button:not(:disabled), a { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: 0.5; }
+
+:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── Application Shell ─────────────────────────────────────────────────────── */
+.app-shell {
+  display: grid;
+  grid-template: auto minmax(0, 1fr) / 15rem minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.app-shell--nav-collapsed {
+  grid-template-columns: 0 minmax(0, 1fr);
+}
+
+.app-shell__content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow-x: hidden;
+}
+
+/* ── Top Bar ───────────────────────────────────────────────────────────────── */
+.top-bar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 3.5rem;
+  padding: 0 var(--space-6);
+  background: var(--color-surface-raised);
+  border-bottom: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-topbar);
+}
+
+.top-bar__identity {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 0 0 auto;
+}
+
+.menu-button {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-base), color var(--transition-base);
+}
+
+.menu-button:hover {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+}
+
+/* Brand mark — clean monogram block, deep navy on white */
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 1.625rem;
+  height: 1.625rem;
+  color: #fff;
+  background: var(--color-text-primary);
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+/* Wordmark — uppercase, tightly tracked, navy */
+.brand-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+/* Breadcrumb trail */
+.breadcrumbs {
+  display: flex;
+  min-width: 0;
+  gap: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.breadcrumbs span:not(:last-child)::after {
+  content: '/';
+  margin-left: var(--space-2);
+  color: var(--color-border-strong);
+}
+
+.breadcrumbs span:last-child {
+  overflow: hidden;
+  color: var(--color-text-secondary);
+  text-overflow: ellipsis;
+}
+
+/* Monitoring indicator — system operational state signal */
+.monitoring-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-left: auto;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Pulse dot */
+.monitoring-indicator > span {
+  display: block;
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--color-status-monitoring);
+  border-radius: 50%;
+  animation: monitoring-pulse 2.5s ease-in-out infinite;
+}
+
+.monitoring-indicator--degraded > span {
+  background: var(--color-status-watch);
+  animation: none;
+}
+
+.monitoring-indicator--paused > span {
+  background: var(--color-status-abstain);
+  animation: none;
+}
+
+/* ── Side Navigation ───────────────────────────────────────────────────────── */
+.side-nav {
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6) var(--space-3);
+  background: var(--color-surface-raised);
+  border-right: 1px solid var(--color-border-subtle);
+  transition: width var(--transition-slow), transform var(--transition-slow);
+  overflow: hidden;
+}
+
+.side-nav nav {
+  display: grid;
+  gap: var(--space-1);
+}
+
+/* Section label — tight uppercase, clearly muted */
+.side-nav__label {
+  margin: 0 0 var(--space-3);
+  padding: 0 var(--space-3);
+  color: var(--color-text-muted);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Nav link — restrained, no filled accent bg */
+.side-nav__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 2.5rem;
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-base),
+              color var(--transition-base),
+              border-color var(--transition-base);
+  white-space: nowrap;
+}
+
+.side-nav__link:hover {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+}
+
+/* Active: sky blue left-border + soft sky tint — restrained professional */
+.side-nav__link.is-active {
+  background: var(--color-surface-active);
+  border-left-color: var(--color-border-focus);
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+/* Icon — small circular monogram, inherits link colour */
+.side-nav__icon {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 1.25rem;
+  height: 1.25rem;
+  color: currentcolor;
+  font-size: 0.625rem;
+  font-weight: 700;
+  border: 1px solid currentcolor;
+  border-radius: 50%;
+  opacity: 0.65;
+}
+
+.side-nav__link:hover .side-nav__icon,
+.side-nav__link.is-active .side-nav__icon {
+  opacity: 1;
+}
+
+/* ── Main Viewport ─────────────────────────────────────────────────────────── */
+.main-viewport {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-8);
+}
+
+.page-container {
+  width: min(100%, 90rem);
+  margin: 0 auto;
+}
+
+/* ── Status Footer ─────────────────────────────────────────────────────────── */
+.status-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-8);
+  color: var(--color-text-muted);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+/* ── Case Context Bar ──────────────────────────────────────────────────────── */
+.case-context-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 2.75rem;
+  padding: 0 var(--space-8);
+  color: var(--color-text-secondary);
+  background: var(--color-surface-raised);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+/* Case ID rendered in monospace */
+.case-context-bar > span {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.case-context-bar label {
+  display: grid;
+  gap: var(--space-1);
+  margin-left: auto;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+.case-context-bar select {
+  min-height: 2.125rem;
+  padding: 0 var(--space-3);
+  color: var(--color-text-primary);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-base);
+}
+
+.case-context-bar select:hover {
+  border-color: var(--color-border-focus);
+}
+
+/* ── Tabs — underline style, not filled pills ──────────────────────────────── */
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-left: auto;
+}
+
+.tabs a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-4);
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  transition: color var(--transition-base), border-color var(--transition-base),
+              background var(--transition-base);
+}
+
+.tabs a:hover {
+  color: var(--color-text-primary);
+  background: var(--color-surface-sunken);
+}
+
+/* Active tab: sky blue underline, no filled background */
+.tabs a.is-active {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  border-bottom-color: var(--color-border-focus);
+}
+
+/* ── Page Header ───────────────────────────────────────────────────────────── */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: var(--space-4);
+  padding-bottom: var(--space-6);
+  margin-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+/* h1 — scaled for analytical workspace, not marketing */
+.page-header h1 {
+  margin: 0;
+  font-size: clamp(1.25rem, 1.5vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+}
+
+.page-header__description {
+  max-width: 44rem;
+  margin: var(--space-2) 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.page-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+/* Eyebrow label — tiny uppercase category label */
+.eyebrow {
+  margin: 0 0 var(--space-2);
+  color: var(--color-text-muted);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Section Header ────────────────────────────────────────────────────────── */
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.section-header h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+}
+
+.section-header p {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+/* ── Card ──────────────────────────────────────────────────────────────────── */
+/* Blueprint: "Use whitespace, typography and separators before introducing
+   another container." Cards are for genuinely self-contained objects.        */
+.card {
+  padding: var(--space-5);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Interactive card — hover state shows intent */
+.card[data-interactive] {
+  cursor: pointer;
+  transition: border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card[data-interactive]:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Button ────────────────────────────────────────────────────────────────── */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 2.25rem;
+  padding: var(--space-2) var(--space-4);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-base),
+              border-color var(--transition-base),
+              color var(--transition-base);
+}
+
+/* Primary — darker sky blue for WCAG contrast on white surface */
+.button--primary {
+  color: #fff;
+  background: var(--color-interactive);
+  border-color: var(--color-interactive);
+}
+
+.button--primary:hover:not(:disabled) {
+  background: var(--color-interactive-hover);
+  border-color: var(--color-interactive-hover);
+}
+
+/* Secondary — outlined, transparent, low visual weight */
+.button--secondary {
+  color: var(--color-text-primary);
+  background: transparent;
+  border-color: var(--color-border-strong);
+}
+
+.button--secondary:hover:not(:disabled) {
+  background: var(--color-surface-sunken);
+  border-color: var(--color-border-focus);
+}
+
+/* Quiet — no border, no background, lowest visual weight */
+.button--quiet {
+  color: var(--color-text-secondary);
+  background: transparent;
+}
+
+.button--quiet:hover:not(:disabled) {
+  background: var(--color-surface-sunken);
+  color: var(--color-text-primary);
+}
+
+/* Danger — reserved for CRITICAL and irreversible actions only.
+   Red must NOT become a generic accent.                                      */
+.button--danger {
+  color: #fff;
+  background: var(--color-status-critical);
+  border-color: var(--color-status-critical);
+}
+
+.button--danger:hover:not(:disabled) {
+  background: #7F1D1D;
+  border-color: #7F1D1D;
+}
+
+/* ── Badge ─────────────────────────────────────────────────────────────────── */
+.badge,
+.status-pill,
+.evidence-gap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3125rem;
+  width: fit-content;
+  min-height: 1.375rem;
+  padding: 0.1875rem var(--space-2);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.badge--neutral {
+  color: var(--color-text-secondary);
+  background: var(--color-surface-sunken);
+}
+
+.badge--info {
+  color: var(--color-interactive);
+  background: var(--color-interactive-light);
+}
+
+.badge--success {
+  color: var(--color-status-normal);
+  background: var(--color-status-normal-bg);
+}
+
+.badge--warning {
+  color: var(--color-status-watch);
+  background: var(--color-status-watch-bg);
+}
+
+/* ── Status Pills ──────────────────────────────────────────────────────────── */
+/* Each pill carries a small dot indicator (::before) so status is never
+   communicated by colour alone — satisfies accessibility requirement.        */
+.status-pill::before {
+  content: '';
+  display: inline-block;
+  width: 0.3125rem;
+  height: 0.3125rem;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* NORMAL — calm green */
+.status-pill--normal {
+  color: var(--color-status-normal);
+  background: var(--color-status-normal-bg);
+}
+
+/* ANOMALOUS — violet: pattern differs from baseline, not criminal */
+.status-pill--anomalous {
+  color: var(--color-status-anomalous);
+  background: var(--color-status-anomalous-bg);
+}
+
+/* WATCH — amber: caution, observation required, NOT confirmed fraud */
+.status-pill--watch {
+  color: var(--color-status-watch);
+  background: var(--color-status-watch-bg);
+}
+
+/* SUSPECTED — indigo: high risk, under investigation, NOT confirmed */
+.status-pill--suspected {
+  color: var(--color-status-suspected);
+  background: var(--color-status-suspected-bg);
+}
+
+/* ACTIVE — deep sky: operationally active, distinct urgency */
+.status-pill--active {
+  color: var(--color-status-active);
+  background: var(--color-status-active-bg);
+}
+
+/* MONITORING — sky: intentional, stable observation */
+.status-pill--monitoring {
+  color: var(--color-status-monitoring);
+  background: var(--color-status-monitoring-bg);
+}
+
+/* PREDICT — violet: prediction workflow */
+.status-pill--predict {
+  color: var(--color-status-predict);
+  background: var(--color-status-predict-bg);
+}
+
+/* ABSTAIN — slate muted: evidence does not justify a conclusion.
+   Intentional. Not an error. Not a crash. No dot.                           */
+.status-pill--abstain {
+  color: var(--color-status-abstain);
+  background: var(--color-status-abstain-bg);
+}
+
+.status-pill--abstain::before { display: none; }
+
+/* CRITICAL — filled dark red: ONLY confirmed operational urgency.
+   Red must not appear anywhere else in the UI.                              */
+.status-pill--critical {
+  color: var(--color-text-on-critical);
+  background: var(--color-status-critical);
+}
+
+.status-pill--critical::before {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+/* CLOSED — muted green: resolved, no further open action */
+.status-pill--closed {
+  color: var(--color-status-closed);
+  background: var(--color-status-closed-bg);
+}
+
+/* ── State Cards ───────────────────────────────────────────────────────────── */
+/* Used for Empty, Error, and full-page fallbacks.
+   Deliberate, calm, informative — never alarming unless genuinely warranted. */
+.state-card {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+  max-width: 38rem;
+  margin: var(--space-10) auto;
+  padding: var(--space-10);
+  color: var(--color-text-secondary);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.state-card h2,
+.state-card p { margin: 0; }
+
+.state-card h2 {
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.state-card p {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Icon mark */
+.state-card__mark {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--color-text-muted);
+  font-size: 1.25rem;
+  line-height: 1;
+  background: var(--color-surface-sunken);
+  border-radius: 50%;
+}
+
+/* Error mark — muted red circle, not alarming unless genuinely critical */
+.error-state .state-card__mark {
+  color: var(--color-status-critical);
+  background: var(--color-status-critical-bg);
+}
+
+.error-state--full {
+  min-height: 100vh;
+  align-content: center;
+  margin: 0 auto;
+  box-shadow: none;
+  border: 0;
+  background: transparent;
+}
+
+/* Request ID — monospace technical identifier */
+.request-id {
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+/* ── Loading State / Skeleton ──────────────────────────────────────────────── */
+.loading-state {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 100%;
+  padding: var(--space-6) 0;
+}
+
+/* Skeleton shimmer — warm beige tones match the page background */
+.skeleton {
+  display: block;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-sunken) 25%,
+    var(--color-border-subtle) 50%,
+    var(--color-surface-sunken) 75%
+  );
+  background-size: 200% 100%;
+  border-radius: var(--radius-sm);
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+
+/* ── Alert Banner ──────────────────────────────────────────────────────────── */
+/* Strip style: left border accent rather than fully bordered box.
+   Communicates type through position and colour, not decoration.             */
+.alert-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-left: 3px solid currentColor;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.alert-banner strong {
+  font-weight: 600;
+}
+
+.alert-banner--info {
+  color: var(--color-interactive);
+  background: var(--color-interactive-light);
+}
+
+.alert-banner--warning {
+  color: var(--color-status-watch);
+  background: var(--color-status-watch-bg);
+}
+
+/* Critical alert — red is intentional here, confirming operational urgency */
+.alert-banner--critical {
+  color: var(--color-status-critical);
+  background: var(--color-status-critical-bg);
+}
+
+/* ── Metric Card ───────────────────────────────────────────────────────────── */
+.metric-card {
+  display: grid;
+  gap: var(--space-2);
+}
+
+/* Label — tiny uppercase, clearly metadata */
+.metric-card p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Value — large, tabular, navy */
+.metric-card strong {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-card span {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+/* ── Data Table ────────────────────────────────────────────────────────────── */
+/* TRISHUL is data-heavy. Tables are preferred over card grids for
+   structured collections.                                                    */
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.data-table caption {
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  text-align: left;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.625rem var(--space-4);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+/* Column headers — tight uppercase, muted, clearly metadata */
+.data-table th {
+  color: var(--color-text-muted);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--color-surface-sunken);
+}
+
+.data-table td {
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.data-table tbody tr[tabindex] {
+  cursor: pointer;
+}
+
+.data-table tbody tr[tabindex]:hover {
+  background: var(--color-surface-sunken);
+}
+
+/* ── Confidence Meter ──────────────────────────────────────────────────────── */
+.confidence-meter {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.confidence-meter__label {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-text-secondary);
+  font-size: 0.8125rem;
+}
+
+.confidence-meter__label strong {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Thin track — restrained, not a decorative progress bar */
+.confidence-meter__track {
+  height: 0.375rem;
+  overflow: hidden;
+  background: var(--color-surface-sunken);
+  border-radius: var(--radius-pill);
+}
+
+.confidence-meter__track span {
+  display: block;
+  height: 100%;
+  background: var(--color-status-suspected);
+  border-radius: inherit;
+  transition: width var(--transition-slow);
+}
+
+/* ── Evidence Gap Marker ───────────────────────────────────────────────────── */
+/* ABSTAIN / missing evidence — muted, not alarming. Absence is visible. */
+.evidence-gap {
+  color: var(--color-status-abstain);
+  background: var(--color-status-abstain-bg);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  border-radius: var(--radius-pill);
+}
+
+/* ── Modal ─────────────────────────────────────────────────────────────────── */
+.modal {
+  width: min(32rem, calc(100% - 2rem));
+  padding: 0;
+  color: var(--color-text-primary);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.modal::backdrop {
+  background: rgb(20 33 61 / 0.56);
+  backdrop-filter: blur(2px);
+}
+
+.modal header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.modal h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.modal > div {
+  padding: var(--space-5);
+}
+
+/* ── Tooltip ───────────────────────────────────────────────────────────────── */
+.tooltip { display: inline-flex; }
+
+/* ── Keyframes ─────────────────────────────────────────────────────────────── */
+@keyframes skeleton-shimmer {
+  to { background-position: -200% 0; }
+}
+
+@keyframes monitoring-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgb(3 105 161 / 0.28); }
+  50%       { box-shadow: 0 0 0 0.3rem rgb(3 105 161 / 0); }
+}
+
+/* ── Responsive — Tablet 768–1023px ───────────────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .app-shell {
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+  }
+
+  .app-shell--nav-collapsed {
+    grid-template-columns: 0 minmax(0, 1fr);
+  }
+
+  .side-nav {
+    padding-inline: var(--space-2);
+  }
+
+  /* Hide text labels in icon-only sidebar */
+  .side-nav__label,
+  .side-nav__link > span:last-child {
+    display: none;
+  }
+
+  .side-nav__link {
+    justify-content: center;
+    padding-inline: var(--space-2);
+    border-left-color: transparent;
+  }
+
+  .side-nav__link.is-active {
+    border-left-color: var(--color-border-focus);
+  }
+
+  .side-nav__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .side-nav--collapsed {
+    width: 0;
+    padding: 0;
+    border: 0;
+  }
+
+  .main-viewport {
+    padding: var(--space-6);
+  }
+
+  .case-context-bar,
+  .status-footer {
+    padding-inline: var(--space-6);
+  }
+}
+
+/* ── Responsive — Mobile <768px ────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .app-shell {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .top-bar {
+    padding-inline: var(--space-4);
+  }
+
+  /* Hide wordmark and breadcrumbs on mobile — too narrow */
+  .brand-name,
+  .breadcrumbs {
+    display: none;
+  }
+
+  .monitoring-indicator {
+    font-size: 0.75rem;
+  }
+
+  /* Mobile sidebar — fixed drawer */
+  .side-nav {
+    position: fixed;
+    z-index: var(--z-sidebar);
+    top: 3.5rem;
+    bottom: 0;
+    left: 0;
+    width: min(17rem, 84vw);
+    padding: var(--space-6) var(--space-3);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(-105%);
+  }
+
+  .side-nav--open {
+    transform: translateX(0);
+  }
+
+  .main-viewport {
+    padding: var(--space-4);
+  }
+
+  .case-context-bar {
+    padding-inline: var(--space-4);
+  }
+
+  .case-context-bar label {
+    margin-left: auto;
+  }
+
+  .page-header {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-bottom: var(--space-5);
+  }
+
+  .status-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  /* Responsive table — stacked card layout on narrow screens */
+  .data-table thead { display: none; }
+
+  .data-table,
+  .data-table tbody,
+  .data-table tr,
+  .data-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .data-table tr {
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .data-table tbody tr:last-child { border-bottom: 0; }
+
+  .data-table td {
+    display: grid;
+    grid-template-columns: minmax(7rem, 40%) 1fr;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    border: 0;
+  }
+
+  .data-table td::before {
+    content: attr(data-label);
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .state-card {
+    margin-block: var(--space-6);
+    padding: var(--space-6);
+  }
+}
+
+/* ── Reduced Motion ────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
