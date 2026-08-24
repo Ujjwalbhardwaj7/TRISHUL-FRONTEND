@@ -5,4 +5,12 @@ import App from './App';
 import { AppProviders } from './app/AppProviders';
 import './styles/globals.css';
 
-createRoot(document.getElementById('root')!).render(<StrictMode><BrowserRouter><AppProviders><App /></AppProviders></BrowserRouter></StrictMode>);
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <BrowserRouter>
+      <AppProviders>
+        <App />
+      </AppProviders>
+    </BrowserRouter>
+  </StrictMode>
+);

@@ -9,15 +9,20 @@ import { NotFoundPage } from '../../layout/NotFoundPage/NotFoundPage';
 import { AppShell } from '../AppShell';
 
 export function AppRoutes() {
-  return <Routes><Route element={<AppShell />}>
-    <Route index element={<Navigate to="/command-center" replace />} />
-    <Route path="command-center" element={<CommandCenterPage />} />
-    <Route path="risk" element={<RiskQueuePage />} />
-    <Route path="cases" element={<CasesPlaceholderPage />} />
-    <Route path="cases/:caseId" element={<CasesPlaceholderPage />} />
-    <Route path="prediction/:caseId" element={<PredictionPlaceholderPage />} />
-    <Route path="resolution/:caseId" element={<ResolutionPlaceholderPage />} />
-    <Route path="audit/:caseId" element={<AuditPlaceholderPage />} />
-    <Route path="*" element={<NotFoundPage />} />
-  </Route></Routes>;
+  return (
+    <Routes>
+      <Route element={<AppShell />}>
+        <Route index element={<Navigate to="/command-center" replace />} />
+        <Route path="command-center" element={<CommandCenterPage />} />
+        <Route path="risk" element={<RiskQueuePage />} />
+        <Route path="cases" element={<CasesPlaceholderPage />} />
+        <Route path="cases/:caseId" element={<CasesPlaceholderPage />} />
+        <Route path="prediction" element={<PredictionPlaceholderPage />} />
+        <Route path="prediction/:caseId" element={<PredictionPlaceholderPage />} />
+        <Route path="resolution/:caseId" element={<ResolutionPlaceholderPage />} />
+        <Route path="audit/:caseId" element={<AuditPlaceholderPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
+  );
 }
