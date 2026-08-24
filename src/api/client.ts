@@ -20,11 +20,16 @@ function toApiError(response: Response, payload: unknown): ApiError {
 export async function apiRequest<TResponse>(path: string, options: ApiRequestOptions = {}): Promise<TResponse> {
   const { body, headers, ...requestOptions } = options;
   let response: Response;
+  const isStringBody = typeof body === 'string';
   try {
     response = await fetch(`${baseUrl}${path}`, {
       ...requestOptions,
-      headers: { Accept: 'application/json', ...(body === undefined ? {} : { 'Content-Type': 'application/json' }), ...headers },
-      body: body === undefined ? undefined : JSON.stringify(body),
+      headers: {
+        Accept: 'application/json',
+        ...(body === undefined ? {} : { 'Content-Type': 'application/json' }),
+        ...headers,
+      },
+      body: body === undefined ? undefined : isStringBody ? body : JSON.stringify(body),
     });
   } catch {
     throw new ApiError({ status: 0, code: 'NETWORK_ERROR', message: 'The server could not be reached.' });
@@ -34,42 +39,12 @@ export async function apiRequest<TResponse>(path: string, options: ApiRequestOpt
   return payload as TResponse;
 }
 
+export async function apiFetch<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
+  return apiRequest<T>(endpoint, options as ApiRequestOptions);
+}
+
 export function unavailableEndpoint(operation: string): never {
   throw new ApiError({ status: 501, code: 'CONTRACT_PENDING', message: `${operation} is unavailable until a backend contract is integrated.` });
 }
-/**
- * Base HTTP Client for TRISHUL API Integration
- */
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api/v1';
-
-export class ApiError extends Error {
-  constructor(public status: number, message: string) {
-    super(message);
-    this.name = 'ApiError';
-  }
-}
-
-export async function apiFetch<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
-  const url = `${API_BASE_URL}${endpoint}`;
-  
-  const headers = {
-    'Content-Type': 'application/json',
-    ...options.headers,
-  };
-
-  const response = await fetch(url, { ...options, headers });
-
-  if (!response.ok) {
-    let errorMsg = `API request failed with status ${response.status}`;
-    try {
-      const errData = await response.json();
-      if (errData.message) errorMsg = errData.message;
-    } catch {
-      // ignore json parse error
-    }
-    throw new ApiError(response.status, errorMsg);
-  }
-
-  return response.json();
-}
+export { ApiError };

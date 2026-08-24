@@ -328,7 +328,7 @@ export function useGeoPrediction(initialCaseId: string = 'CASE-2026-8891') {
   // State override switcher for testing/demonstration (ABSTAIN / MONITORING / CONFIRMED)
   const setForecastState = useCallback((state: ForecastState) => {
     setForecast((prev) => {
-      let updatedCoverage = { ...prev.evidenceCoverage };
+      const updatedCoverage = { ...prev.evidenceCoverage };
       let gateStatus: GateStatus = 'VERIFIED';
       let passedCount = 4;
       let blockingReasons: string[] = [];
