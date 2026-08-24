@@ -1,0 +1,12 @@
+import type { CaseDirectoryRecord, CaseIntelligenceData } from '../caseIntelligence.types';
+
+/** Development-only deterministic dossier. It is not a production response. */
+export function getCaseIntelligenceFixture(caseId: string): CaseIntelligenceData {
+  return { caseId, status: 'ACTIVE', complaintReference: 'DEV-COMP-0142', transactionReference: 'DEV-TRX-000184', transactionOccurredAt: '2026-08-25T09:42:00+05:30', attributableExposure: { minimum: 10000, maximum: 30000, currency: 'INR' }, riskReasons: ['NEW_BENEFICIARY', 'RECEIVER_INFLOW_SPIKE', 'HIGH_PASS_THROUGH'], graph: { nodes: [{ id: 'payer', label: 'Payer account', kind: 'ACCOUNT', x: 70, y: 84 }, { id: 'transaction', label: 'DEV-TRX-000184', kind: 'TRANSACTION', x: 230, y: 84 }, { id: 'receiver', label: 'Receiver account', kind: 'BENEFICIARY', x: 390, y: 84 }], edges: [{ id: 'edge-payer-transaction', from: 'payer', to: 'transaction', transactionReference: 'DEV-TRX-000184', occurredAt: '2026-08-25T09:42:00+05:30', caseLinkage: 'Payment anchor', provenance: 'Development transaction event' }, { id: 'edge-transaction-receiver', from: 'transaction', to: 'receiver', transactionReference: 'DEV-TRX-000184', occurredAt: '2026-08-25T09:42:00+05:30', caseLinkage: 'Receiver linkage', provenance: 'Development payment provider event' }] }, evidence: [{ id: 'evidence-1', occurredAt: '2026-08-25T09:42:00+05:30', title: 'Payment anchor recorded', detail: 'The transaction reference is linked to the active case record.', provenance: 'Development transaction event' }, { id: 'evidence-2', occurredAt: '2026-08-25T10:04:00+05:30', title: 'Receiver inflow observation', detail: 'Observed receiver activity differs from the available baseline.', provenance: 'Development behavioural signal' }, { id: 'evidence-3', occurredAt: '2026-08-25T10:12:00+05:30', title: 'Exposure range updated', detail: 'Attributable exposure remains a range after available flow analysis.', provenance: 'Development graph analysis' }] };
+}
+
+/** Development-only case register for the Case Intelligence landing route. */
+export const caseIntelligenceIndexFixture: CaseDirectoryRecord[] = [
+  { caseId: 'CC-1042', complaintReference: 'DEV-COMP-0142', transactionReference: 'DEV-TRX-000184', status: 'ACTIVE', updatedAt: '2026-08-25T10:14:00+05:30' },
+  { caseId: 'CC-1047', complaintReference: 'DEV-COMP-0147', transactionReference: 'DEV-TRX-000188', status: 'MONITORING', updatedAt: '2026-08-25T10:04:00+05:30' },
+];

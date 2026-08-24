@@ -1,0 +1,375 @@
+/* ==========================================================================
+   TRISHUL — Command Center Dossier Styles
+   ========================================================================== */
+
+.command-center-page {
+  display: grid;
+  gap: var(--space-8);
+  min-width: 0;
+}
+
+.command-center-page > .alert-banner {
+  margin-top: calc(var(--space-8) * -0.5);
+}
+
+/* ── Hero Lead Section ───────────────────────────────────────────────────── */
+.command-center-hero {
+  display: grid;
+  gap: var(--space-4);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border-strong);
+}
+
+.command-center-hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.command-center-hero__title {
+  margin: 0;
+  font-family: var(--font-editorial);
+  font-size: clamp(2rem, 3.8vw, 3.25rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  max-width: 48rem;
+}
+
+.command-center-hero__lead {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 48rem;
+}
+
+.command-center-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+/* ── Summary Metrics Bar (Table / Matrix Style) ──────────────────────────── */
+.command-center-summary-matrix {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-strong);
+}
+
+.command-center-summary-cell {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-5);
+  border-right: 1px solid var(--color-border-subtle);
+}
+
+.command-center-summary-cell:last-child {
+  border-right: none;
+}
+
+.command-center-summary-cell__label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.command-center-summary-cell__value {
+  font-family: var(--font-editorial);
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.command-center-summary-cell__desc {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+/* ── Main Body Split Layout ──────────────────────────────────────────────── */
+.command-center-page__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(17rem, 20rem);
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.command-center-page__main,
+.command-center-margin {
+  display: grid;
+  min-width: 0;
+  gap: var(--space-8);
+}
+
+.command-center-section {
+  min-width: 0;
+}
+
+.command-center-case-id {
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.command-center-forecast {
+  display: grid;
+  min-width: 0;
+  gap: var(--space-1);
+  justify-items: start;
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+}
+
+.command-center-forecast a {
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── Split Grid for Watch Activity & Interventions ───────────────────────── */
+.command-center-page__split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+
+.command-center-page__split .card {
+  padding: var(--space-5);
+  background: var(--color-surface-raised);
+}
+
+.command-center-feed ul,
+.command-center-activity ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.command-center-feed li {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.command-center-feed li:first-child,
+.command-center-activity li:first-child {
+  padding-top: 0;
+}
+
+.command-center-feed li:last-child,
+.command-center-activity li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.command-center-feed__heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.command-center-feed strong,
+.command-center-activity strong {
+  font-family: var(--font-editorial);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.command-center-feed p,
+.command-center-activity p {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.command-center-feed time,
+.command-center-activity time {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+}
+
+.command-center-activity li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.command-center-activity li > div:last-child {
+  display: grid;
+  align-content: start;
+  justify-items: end;
+  gap: 2px;
+  text-align: right;
+}
+
+/* ── Operating Protocol / Dossier Methodology Section ────────────────────── */
+.command-center-protocol {
+  display: grid;
+  grid-template-columns: minmax(14rem, 1fr) minmax(0, 2fr);
+  gap: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.command-center-protocol__header h3 {
+  margin: var(--space-1) 0 0;
+  font-family: var(--font-editorial);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.command-center-protocol__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.command-center-protocol__row {
+  display: grid;
+  grid-template-columns: 2.5rem 10rem minmax(0, 1fr);
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-size: 0.8125rem;
+  align-items: baseline;
+}
+
+.command-center-protocol__row:first-child {
+  padding-top: 0;
+}
+
+.command-center-protocol__row:last-child {
+  border-bottom: 0;
+}
+
+.command-center-protocol__index {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.command-center-protocol__label {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.command-center-protocol__desc {
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* ── Margin Intelligence ─────────────────────────────────────────────────── */
+.command-center-margin {
+  padding-left: var(--space-4);
+  border-left: 1px solid var(--color-border-strong);
+}
+
+.command-center-margin__header {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border-strong);
+  margin-bottom: var(--space-4);
+}
+
+.command-center-margin .margin-note {
+  border-top: none;
+  padding-top: 0;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-subtle);
+  margin-bottom: var(--space-4);
+}
+
+/* ── Responsive Adaptations ──────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .command-center-summary-matrix {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .command-center-summary-cell:nth-child(2) {
+    border-right: none;
+  }
+
+  .command-center-summary-cell:nth-child(1),
+  .command-center-summary-cell:nth-child(2) {
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .command-center-page__body {
+    grid-template-columns: 1fr;
+  }
+
+  .command-center-margin {
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--color-border-strong);
+    padding-top: var(--space-6);
+  }
+
+  .command-center-page__split {
+    grid-template-columns: 1fr;
+  }
+
+  .command-center-protocol {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 767px) {
+  .command-center-summary-matrix {
+    grid-template-columns: 1fr;
+  }
+
+  .command-center-summary-cell {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .command-center-protocol__row {
+    grid-template-columns: 1.5rem 1fr;
+    gap: var(--space-1);
+  }
+
+  .command-center-protocol__desc {
+    grid-column: 2;
+  }
+
+  .command-center-activity li {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .command-center-activity li > div:last-child {
+    justify-items: start;
+    text-align: left;
+  }
+}

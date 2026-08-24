@@ -262,7 +262,11 @@ const CASE_DATABASE: Record<string, ForecastData> = {
 export function useGeoPrediction(initialCaseId: string = 'CASE-2026-8891') {
   const [caseId, setCaseId] = useState<string>(initialCaseId);
   const [forecast, setForecast] = useState<ForecastData>(
-    CASE_DATABASE[initialCaseId] || CASE_DATABASE['CASE-2026-8891']
+    CASE_DATABASE[initialCaseId] || {
+      ...CASE_DATABASE['CASE-2026-8891'],
+      caseId: initialCaseId,
+      forecastId: `DEV-${initialCaseId}-FORECAST`,
+    }
   );
   const [selectedZoneId, setSelectedZoneId] = useState<string | null>('zone-1');
   const [loading, setLoading] = useState<boolean>(false);

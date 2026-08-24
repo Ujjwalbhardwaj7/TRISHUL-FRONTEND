@@ -1,14 +1,14 @@
 /* ==========================================================================
    TRISHUL — Payment Risk / Verify Workspace
-   Visual Identity: "The Calm Scholar"
+   Visual Identity: "The Financial Intelligence Dossier"
    Hierarchy:
-     1. Transaction Summary
-     2. PrivacyPass Trust Verification
-     3. Transaction Anomaly
-     4. Receiver Behaviour
-     5. Network Risk
-     6. Explainable Reason Codes
-     7. Final Decision
+     01 · Transaction Summary
+     02 · PrivacyPass Trust Verification
+     03 · Transaction Anomaly
+     04 · Receiver Behaviour
+     05 · Network Risk
+     06 · Explainable Reason Codes
+     07 · Final Decision
    ========================================================================== */
 
 .payment-risk-page {
@@ -25,13 +25,15 @@
   min-width: 0;
 }
 
-/* ── 1. Transaction Summary ─────────────────────────────────────────────── */
+/* ── 01. Transaction Summary ─────────────────────────────────────────────── */
 .payment-risk-transaction-card {
   display: grid;
-  grid-template-columns: minmax(16rem, 1fr) minmax(0, 1.6fr);
+  grid-template-columns: minmax(17rem, 1fr) minmax(0, 1.7fr);
   gap: var(--space-8);
   align-items: start;
   padding: var(--space-6);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-strong);
 }
 
 .payment-risk-transaction-hero {
@@ -39,7 +41,7 @@
   flex-direction: column;
   gap: var(--space-4);
   padding-right: var(--space-6);
-  border-right: 1px solid var(--color-border-subtle);
+  border-right: 1px solid var(--color-border-strong);
 }
 
 .payment-risk-transaction-amount-group {
@@ -51,6 +53,7 @@
 .payment-risk-transaction-amount-label {
   margin: 0;
   color: var(--color-text-muted);
+  font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -59,9 +62,10 @@
 
 .payment-risk-transaction-amount {
   margin: 0;
+  font-family: var(--font-editorial);
   color: var(--color-text-primary);
-  font-size: clamp(1.875rem, 3vw, 2.5rem);
-  font-weight: 700;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.1;
   font-variant-numeric: tabular-nums;
@@ -133,6 +137,7 @@
 }
 
 .payment-risk-details-item dt {
+  font-family: var(--font-mono);
   color: var(--color-text-muted);
   font-size: 0.6875rem;
   font-weight: 700;
@@ -157,11 +162,13 @@
   font-size: 0.75rem;
 }
 
-/* ── 2. PrivacyPass Trust Verification ───────────────────────────────────── */
+/* ── 02. PrivacyPass Trust Verification ──────────────────────────────────── */
 .payment-risk-trust-card {
   display: grid;
   gap: var(--space-4);
   padding: var(--space-6);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-strong);
 }
 
 .payment-risk-trust-header {
@@ -181,12 +188,14 @@
 }
 
 .payment-risk-trust-provider {
+  font-family: var(--font-mono);
   color: var(--color-text-secondary);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 600;
 }
 
 .payment-risk-trust-time {
+  font-family: var(--font-mono);
   color: var(--color-text-muted);
   font-size: 0.75rem;
 }
@@ -210,9 +219,8 @@
   gap: var(--space-3);
   padding: var(--space-3) var(--space-4);
   background: var(--color-surface-sunken);
-  border: 1px solid var(--color-border-subtle);
+  border: 1px solid var(--color-border-strong);
   border-left: 3px solid var(--color-interactive);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
 }
 
 .payment-risk-trust-distinction-icon {
@@ -230,10 +238,11 @@
 }
 
 .payment-risk-trust-distinction-text strong {
+  font-family: var(--font-mono);
   color: var(--color-text-primary);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
@@ -244,7 +253,7 @@
   line-height: 1.5;
 }
 
-/* ── 3, 4, 5. Risk Dimensions ────────────────────────────────────────────── */
+/* ── 03, 04, 05. Risk Dimensions ─────────────────────────────────────────── */
 .payment-risk-dimensions-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -257,6 +266,7 @@
   gap: var(--space-4);
   padding: var(--space-5);
   background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-strong);
 }
 
 .payment-risk-dimension-card--abstain {
@@ -286,8 +296,9 @@
 
 .payment-risk-dimension-card h3 {
   margin: 0;
+  font-family: var(--font-editorial);
   color: var(--color-text-primary);
-  font-size: 0.9375rem;
+  font-size: 1.0625rem;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -317,9 +328,11 @@
   line-height: 1.5;
 }
 
-/* ── 6. Explainable Reason Codes ─────────────────────────────────────────── */
+/* ── 06. Explainable Reason Codes ────────────────────────────────────────── */
 .payment-risk-reasons-card {
   padding: var(--space-6);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-strong);
 }
 
 .payment-risk-reasons-grid {
@@ -335,7 +348,6 @@
   padding: var(--space-4);
   background: var(--color-surface-sunken);
   border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-sm);
 }
 
 .payment-risk-reason-top {
@@ -352,11 +364,11 @@
   color: var(--color-text-primary);
   background: var(--color-surface-raised);
   padding: 2px var(--space-2);
-  border-radius: var(--radius-sm);
   border: 1px solid var(--color-border-subtle);
 }
 
 .payment-risk-reason-category {
+  font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -366,8 +378,9 @@
 
 .payment-risk-reason-label {
   margin: 0;
+  font-family: var(--font-editorial);
   color: var(--color-text-primary);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 
@@ -384,12 +397,14 @@
   font-size: 0.875rem;
 }
 
-/* ── 7. Final Decision ───────────────────────────────────────────────────── */
+/* ── 07. Final Decision ──────────────────────────────────────────────────── */
 .payment-risk-decision-card {
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
   padding: var(--space-6);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-strong);
   border-top: 3px solid var(--color-interactive);
 }
 
@@ -416,9 +431,10 @@
 
 .payment-risk-decision-title {
   margin: 0;
+  font-family: var(--font-editorial);
   color: var(--color-text-primary);
-  font-size: 1.125rem;
-  font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: 600;
   letter-spacing: -0.01em;
 }
 
@@ -438,6 +454,7 @@
 
 .payment-risk-decision-reasons-label {
   margin: 0;
+  font-family: var(--font-mono);
   color: var(--color-text-muted);
   font-size: 0.6875rem;
   font-weight: 700;
@@ -457,13 +474,12 @@
   color: var(--color-text-secondary);
   background: var(--color-surface-sunken);
   border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-sm);
   font-family: var(--font-mono);
   font-size: 0.75rem;
 }
 
 /* ── Responsive Adaptations ──────────────────────────────────────────────── */
-@media (max-width: 1023px) {
+@media (max-width: 1100px) {
   .payment-risk-transaction-card {
     grid-template-columns: 1fr;
     gap: var(--space-6);
@@ -473,7 +489,7 @@
     padding-right: 0;
     padding-bottom: var(--space-5);
     border-right: none;
-    border-bottom: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-strong);
   }
 
   .payment-risk-dimensions-grid {
